@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'seleniumWebDriver-training'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation("io.github.bonigarcia:webdrivermanager:4.3.1")
+    testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0'
+    testImplementation("org.slf4j:slf4j-nop:1.7.25")
+}
