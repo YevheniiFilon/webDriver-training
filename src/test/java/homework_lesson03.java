@@ -15,8 +15,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class homework_lesson03 {
     WebDriver driver;
-    String user_login = "testadmin";
-    String user_pass = "R8MRDAYT_test";
+    String user_login = "";
+    String user_pass = "";
     WebDriverWait wait;
 
     @BeforeEach
