@@ -1,5 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -41,7 +42,9 @@ public class homework_lesson03 {
         WebElement login_btn = driver.findElement(By.cssSelector("button.btn.btn-default"));
         login_btn.click();
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("label.nav-toggle")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("box-apps-menu")));
+
+        //wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("label.nav-toggle")));
     }
 
     @AfterEach
@@ -59,7 +62,7 @@ public class homework_lesson03 {
             //click on the item of the main menu
             menu_item.click();
             //try to find sub menu of the previous item
-            if (isElementPresent(driver, By.cssSelector("ul.docs"))){
+            if (isElementPresent(By.cssSelector("ul.docs"))){
                 //get the number of sub menus
                 int count_submenu = driver.findElements(By.xpath("//*[@id='box-apps-menu']//ul[@class='docs']/li")).size();
                     for (int a=1; a<=count_submenu; a++){
@@ -82,10 +85,34 @@ public class homework_lesson03 {
         }
     }
 
+    @Test
+    void anotherWay(){
+        By mainMenuItem = By.className("app");
+        By subMenuItem = By.className("doc");
+        By panelHeading = By.className("panel-heading");
+
+        for (int mainIterator = 1; mainIterator <= driver.findElements(mainMenuItem).size(); mainIterator++) {
+            WebElement mainMenuElem = driver.findElement(By.xpath("//li[contains(@class,'app')][" + mainIterator + "]"));
+            wait.until(ExpectedConditions.elementToBeClickable(mainMenuElem));
+            mainMenuElem.click();
+            Assertions.assertTrue(isElementPresent(panelHeading));
+            //System.out.println(driver.findElement(By.xpath("//li[contains(@class,'app')][" + mainIterator + "]")).getText());
+
+            for (int subMenuIterator = 1; subMenuIterator <= driver.findElements(subMenuItem).size(); subMenuIterator++) {
+                WebElement subMenuElem = driver.findElement(By.xpath("//li[contains(@class,'doc')][" + subMenuIterator + "]"));
+                wait.until(ExpectedConditions.elementToBeClickable(subMenuElem));
+                subMenuElem.click();
+                Assertions.assertTrue(isElementPresent(panelHeading));
+                //System.out.println(driver.findElement(By.xpath("//li[contains(@class,'doc')][" + subMenuIterator + "]")).getText());
+            }
+        }
+    }
 
 
-    public boolean isElementPresent(WebDriver driver, By locator)
-    { return  driver.findElements(locator).size()>0; }
+    boolean isElementPresent(By element) {
+        return driver.findElements(element).size() > 0;
+    }
+
 
 
 }
