@@ -28,7 +28,7 @@ public class findElements02 {
 
     @Test
     void findElements() {
-        driver.get("http://158.101.173.161/");
+        driver.get("");
 
         WebElement element_manufacturers = driver.findElement(By.cssSelector("li.manufacturers.dropdown"));
         Assertions.assertEquals("Manufacturers", element_manufacturers.getText(), "Element Manufacturers was not found");
