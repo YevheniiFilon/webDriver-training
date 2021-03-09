@@ -27,7 +27,7 @@ public class homework_lesson04 {
         ChromeOptions opts = new ChromeOptions();
         opts.addArguments("start-maximized");
         driver = new ChromeDriver(opts);
-        driver.get("http://158.101.173.161/");
+        driver.get("");
         wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.elementToBeClickable(By.id("box-popular-products")));
         isElementPresent(By.id("box-popular-products"));
