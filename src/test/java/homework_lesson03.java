@@ -25,7 +25,7 @@ public class homework_lesson03 {
         ChromeOptions opts = new ChromeOptions();
         opts.addArguments("start-maximized");
         driver = new ChromeDriver(opts);
-        driver.get("http://158.101.173.161/admin/");
+        driver.get("");
 
         wait = new WebDriverWait(driver,10);
 
