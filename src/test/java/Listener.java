@@ -39,12 +39,15 @@ public class Listener extends AbstractWebDriverEventListener {
 
     @Override
     public void beforeFindBy(By by, WebElement element, WebDriver driver) {
+
         highlight(element, "red", driver);
     }
 
     @Override
     public void afterFindBy(By by, WebElement element, WebDriver driver) {
+
         highlight(element, "green", driver);
+        System.out.println("Element was found: "+element);
     }
 
     public static <T extends WebElement> T highlight(T element , WebDriver driver) {
