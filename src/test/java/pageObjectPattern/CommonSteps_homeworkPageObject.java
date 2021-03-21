@@ -42,7 +42,7 @@ public class CommonSteps_homeworkPageObject {
     @FindBy(id = "box-checkout")
     WebElement tableItemsInCart;
 
-    String BASE_URL = "http://158.101.173.161";
+    String BASE_URL = "";
     Random random = new Random();
 
 
